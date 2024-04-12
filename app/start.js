@@ -1,14 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import UpperHome from "../components/UpperHome";
-import { PaperSVG } from "../utils/Svg";
+import { PaperSVG, DarkArrowRight } from "../utils/Svg";
 import {
   useFonts,
   Rubik_500Medium,
   Rubik_600SemiBold,
   Rubik_400Regular,
 } from "@expo-google-fonts/rubik";
-import {Link} from 'expo-router';
+import { Link } from "expo-router";
+import AskDoubt from "../components/AskDoubt";
+import { useState } from "react";
 
 export default function Start() {
   const [fontsLoaded] = useFonts({
@@ -16,52 +18,42 @@ export default function Start() {
     Rubik_500Medium,
     Rubik_600SemiBold,
   });
+  const [text, setText] = useState("")
+  const handleTextChange = (newText) => {
+    // console.log(newText);
+    setText(newText);
+  };
   return (
     <>
       <StatusBar hidden />
       <UpperHome />
       {fontsLoaded && (
         <View style={styles.container}>
-          <Text style={styles.greetingText}>Good afternoon, Dr. Shreya!</Text>
-          <Text style={styles.welcomeText}>
-            Welcome to the Oncosfffsfssdurse Major Hospital
-          </Text>
-          <View style={{ flexDirection: "column", paddingHorizontal: 37 }}>
-            <Text style={styles.instructionTitleText}>INSTRUCTIONS</Text>
-            <Text style={styles.instructionText}>
-              There are 20 patients waiting to see you. You need to quickly
-              diagnose and move ahead with the help from a senior doctor.
-            </Text>
-          </View>
-          <Link href="/opd">
-          <Pressable style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>ENTER THE OPD ROOM</Text>
-          </Pressable>
-          </Link>
-          <View style={{ width: "100%" }}>
-            <View
-              style={{
-                flexDirection: "row",
-                marginHorizontal: 42,
-                justifyContent: "space-between",
-              }}
-            >
-              <View style={styles.subContainer}>
-                <PaperSVG />
-                <Text style={styles.subText}> 5 PYQ's</Text>
-              </View>
-              <View style={styles.subContainer}>
-                <Text style={styles.subText}>😷 20 Patients</Text>
-              </View>
-              <View style={styles.subContainer}>
-                <Text style={styles.subText}>⏱ 20 mins</Text>
-              </View>
+          <View style={styles.chatContainer}>
+            <View style={styles.imageContainer}>
+              <Text style={styles.imageText}>👩🏻‍⚕️</Text>
+            </View>
+            <View style={{ flexDirection: "column", width: 270 }}>
+              <Text style={styles.greetingText}>SENIOR DR. PRIYA</Text>
+              <Text style={styles.welcomeText}>
+                You are right on time Dr. Shreya!
+              </Text>
+              <Text style={styles.welcomeText}>
+                We have 20 patients that are waiting to be diagnosed today.
+              </Text>
+              <Text style={styles.welcomeText}>
+                Don't worry, I am there to guide and help you learn. You can
+                learn along with me.
+              </Text>
+              <Link href="/start">
+                <Pressable style={styles.buttonContainer}>
+                  <Text style={styles.buttonText}>See the 1st patient</Text>
+                  <DarkArrowRight />
+                </Pressable>
+              </Link>
+              <AskDoubt onTextChange={handleTextChange}/>
             </View>
           </View>
-          <Text style={styles.bottomText}>
-            Toppers Recommend Neuroanatomy is best learnt via: Mnemonics with
-            stories, Image based Occlusion Flashcards
-          </Text>
         </View>
       )}
     </>
@@ -77,81 +69,61 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 12,
     marginTop: -10,
   },
+  chatContainer: {
+    flexDirection: "row",
+    marginTop: 69,
+    marginHorizontal: 39,
+    gap: 19,
+  },
   greetingText: {
-    marginTop: 63,
-    color: "#FFFFFF",
-    fontSize: 20,
-    fontFamily: "Rubik_600SemiBold",
-    lineHeight: 30,
-  },
-  welcomeText: {
-    marginTop: -1,
-    color: "#FFFFFF",
-    fontSize: 14,
-    fontFamily: "Rubik_400Regular",
-    lineHeight: 21,
-  },
-  instructionTitleText: {
-    marginTop: 48,
+    // marginTop: 63,
     color: "#FFFFFF",
     fontSize: 12,
     fontFamily: "Rubik_400Regular",
-    lineHeight: 21,
-    opacity: 0.4,
+    lineHeight: 18,
+    marginBottom: 4,
   },
-  instructionText: {
-    marginTop: 10,
+  welcomeText: {
+    // marginTop: -1,
     color: "#FFFFFF",
     fontSize: 14,
-    fontFamily: "Rubik_400Regular",
+    fontFamily: "Rubik_500Medium",
     lineHeight: 21,
-    opacity: 0.7,
+    marginBottom: 25,
+  },
+  imageContainer: {
+    width: 37,
+    height: 37,
+    backgroundColor: "#7FB7F9",
+    borderRadius: 4,
+  },
+  imageText: {
+    color: "#FFFFFF",
+    fontSize: 30,
+    fontFamily: "Rubik_400Regular",
+    // lineHeight: 45,
   },
   buttonContainer: {
-    marginTop: 75,
-    marginVertical: 42,
-    borderRadius: 12,
+    marginTop: 31,
+    borderRadius: 5.52,
     backgroundColor: "#FFFFFF",
-    marginHorizontal: 48,
-    width: 310,
-    height: 48,
-    justifyContent: "center",
-    shadowColor: "#CDCDCD",
-    shadowOffset: { width: 0, height: 4 },
+    flexDirection: "row",
+    width: '100%',
+    height: 37.08,
+    justifyContent: "space-between",
+    alignItems: "center", 
+    shadowColor: "#3D3B3529",
+    shadowOffset: { width: 0, height: 0.79 },
     shadowRadius: 0,
     elevation: 4,
+    paddingHorizontal: 12,
   },
   buttonText: {
     color: "#FFFFFF",
-    fontSize: 14,
+    fontSize: 12.62,
     fontFamily: "Rubik_500Medium",
-    lineHeight: 14,
-    color: "#414167",
-    alignSelf: "center",
-  },
-  subContainer: {
-    flexDirection: "row",
-    borderRadius: 6,
-    backgroundColor: "#F2F2F2",
-    height: 23,
-    paddingHorizontal: 6,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  subText: {
-    fontFamily: "Rubik_500Medium",
-    fontSize: 14,
-    color: "#4F4F4F",
-    lineHeight: 21,
-  },
-  bottomText: {
-    marginHorizontal: 48,
-    marginTop: 64,
-    fontFamily: "Rubik_500Medium",
-    fontSize: 12,
-    lineHeight: 18,
-    color: "#FFFFFF",
+    lineHeight: 18.94,
+    color: "#101828",
+    // alignSelf: "center",
   },
 });
-
-

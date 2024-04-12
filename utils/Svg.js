@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { G, Rect, Path, Defs } from "react-native-svg"
+import * as React from "react";
+import Svg, { G, Rect, Path, Defs, Mask, ClipPath } from "react-native-svg";
 
 export function BackSVG(props) {
   return (
@@ -23,7 +23,7 @@ export function BackSVG(props) {
       </G>
       <Defs></Defs>
     </Svg>
-  )
+  );
 }
 
 export function PaperSVG(props) {
@@ -50,5 +50,55 @@ export function PaperSVG(props) {
         strokeLinejoin="round"
       />
     </Svg>
-  )
+  );
+}
+
+export function DarkArrowRight(props) {
+  return (
+    <Svg
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <G clipPath="url(#clip0_13_111)">
+        <Mask
+          id="a"
+          style={{
+            maskType: "luminance",
+          }}
+          maskUnits="userSpaceOnUse"
+          x={0}
+          y={0}
+          width={20}
+          height={20}
+        >
+          <Path
+            d="M10 18.333A8.333 8.333 0 101.667 10 8.333 8.333 0 0010 18.333z"
+            fill="#fff"
+            stroke="#fff"
+            strokeWidth={1.66667}
+            strokeLinejoin="round"
+          />
+          <Path
+            d="M8.75 13.75L12.5 10 8.75 6.25"
+            stroke="#000"
+            strokeWidth={1.66667}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </Mask>
+        <G mask="url(#a)">
+          <Path d="M0 0h20v20H0V0z" fill="#414167" />
+        </G>
+      </G>
+      <Defs>
+        <ClipPath id="clip0_13_111">
+          <Path fill="#fff" d="M0 0H20V20H0z" />
+        </ClipPath>
+      </Defs>
+    </Svg>
+  );
 }

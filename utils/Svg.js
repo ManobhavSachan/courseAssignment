@@ -102,3 +102,46 @@ export function DarkArrowRight(props) {
     </Svg>
   );
 }
+
+export function MenuSVG(props) {
+  return (
+    <Svg
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <G filter="url(#filter0_ddd_90_30)">
+        <Rect x={5} y={3} width={22} height={22} rx={11} fill="#fff" />
+        <Path
+          d="M10.5 10h11m-11 4h11m-11 4h11"
+          stroke="#000"
+          strokeWidth={1.88235}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </G>
+      <Defs></Defs>
+    </Svg>
+  );
+}
+
+export function StarSVG(props) {
+  return (
+    <Svg
+      width={22}
+      height={22}
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M10.13.543a1 1 0 011.74 0l.81 1.432a1 1 0 001.378.37l1.416-.836a1 1 0 011.509.87l-.016 1.645a1 1 0 001.01 1.01l1.644-.017a1 1 0 01.87 1.509l-.836 1.416a1 1 0 00.37 1.379l1.432.808a1 1 0 010 1.742l-1.432.808a1 1 0 00-.37 1.38l.836 1.415a1 1 0 01-.87 1.509l-1.645-.016a1 1 0 00-1.01 1.01l.017 1.644a1 1 0 01-1.509.87l-1.416-.836a1 1 0 00-1.379.37l-.808 1.432a1 1 0 01-1.742 0l-.808-1.432a1 1 0 00-1.38-.37l-1.415.836a1 1 0 01-1.509-.87l.016-1.645a1 1 0 00-1.01-1.01l-1.644.017a1 1 0 01-.87-1.509l.836-1.416a1 1 0 00-.37-1.379l-1.432-.808a1 1 0 010-1.742l1.432-.808a1 1 0 00.37-1.38l-.836-1.415a1 1 0 01.87-1.509l1.645.016a1 1 0 001.01-1.01L5.016 2.38a1 1 0 011.509-.87l1.416.836a1 1 0 001.379-.37l.808-1.432z"
+        fill="#fff"
+      />
+    </Svg>
+  );
+}

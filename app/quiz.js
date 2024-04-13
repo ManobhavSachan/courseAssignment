@@ -13,13 +13,13 @@ import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
-export default function Start() {
+export default function Quiz() {
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
     Rubik_600SemiBold,
   });
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
   const handleTextChange = (newText) => {
     // console.log(newText);
     setText(newText);
@@ -27,9 +27,12 @@ export default function Start() {
   return (
     <>
       <StatusBar hidden />
-      <UpperHome />
+      <UpperBar />
       {fontsLoaded && (
         <View style={styles.container}>
+          <View style={styles.subContainer}>
+            <Text style={styles.subText}>View Case Details</Text>
+          </View>
           <View style={styles.chatContainer}>
             <View style={styles.imageContainer}>
               <Text style={styles.imageText}>👩🏻‍⚕️</Text>
@@ -46,13 +49,13 @@ export default function Start() {
                 Don't worry, I am there to guide and help you learn. You can
                 learn along with me.
               </Text>
-              <Link href="/quiz">
+              <Link href="/start">
                 <Pressable style={styles.buttonContainer}>
                   <Text style={styles.buttonText}>See the 1st patient</Text>
                   <DarkArrowRight />
                 </Pressable>
               </Link>
-              <AskDoubt onTextChange={handleTextChange}/>
+              <AskDoubt onTextChange={handleTextChange} />
             </View>
           </View>
         </View>
@@ -64,11 +67,11 @@ export default function Start() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2B2B58",
-    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    // alignItems: "center",
     borderTopEndRadius: 12,
     borderTopStartRadius: 12,
-    marginTop: -10,
+    marginTop: -9,
   },
   chatContainer: {
     flexDirection: "row",
@@ -78,6 +81,7 @@ const styles = StyleSheet.create({
   },
   greetingText: {
     // marginTop: 63,
+
     color: "#FFFFFF",
     fontSize: 12,
     fontFamily: "Rubik_400Regular",
@@ -85,7 +89,6 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   welcomeText: {
-    // marginTop: -1,
     color: "#FFFFFF",
     fontSize: 14,
     fontFamily: "Rubik_500Medium",
@@ -109,10 +112,10 @@ const styles = StyleSheet.create({
     borderRadius: 5.52,
     backgroundColor: "#FFFFFF",
     flexDirection: "row",
-    width: '100%',
+    width: "100%",
     height: 37.08,
     justifyContent: "space-between",
-    alignItems: "center", 
+    alignItems: "center",
     shadowColor: "#3D3B3529",
     shadowOffset: { width: 0, height: 0.79 },
     shadowRadius: 0,
@@ -126,5 +129,22 @@ const styles = StyleSheet.create({
     lineHeight: 18.94,
     color: "#101828",
     // alignSelf: "center",
+  },
+  subContainer: {
+    // flexDirection: "row",
+    borderRadius: 6,
+    backgroundColor: "#F1F1F1",
+    height: 20,
+    paddingHorizontal: 6,
+    marginRight: 20,
+    marginTop: 20,
+    marginLeft: "auto",
+  },
+  subText: {
+    fontFamily: "Rubik_400Regular",
+    fontSize: 12,
+    color: "#4F4F4F",
+    lineHeight: 18,
+    textAlign: "right",
   },
 });

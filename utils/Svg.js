@@ -145,3 +145,63 @@ export function StarSVG(props) {
     </Svg>
   );
 }
+
+export function MenuBigSVG(props) {
+  return (
+    <Svg
+      width={28}
+      height={28}
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M4.375 7h19.25m-19.25 7h19.25m-19.25 7h19.25"
+        stroke="#000"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+export function ArrowRightSVG(props) {
+  return (
+    <Svg
+      width={50}
+      height={50}
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M6.563 25.5a17.937 17.937 0 1035.874 0 17.937 17.937 0 00-35.874 0zm7.687-1.281h15.567l-7.15-7.184L24.5 15.25 34.75 25.5 24.5 35.75l-1.832-1.828 7.15-7.14H14.25v-2.563z"
+        fill="#2E2A44"
+      />
+    </Svg>
+  )
+}
+
+export function BookMarkSVG(props) {
+  return (
+    <Svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M16 3H8a2 2 0 00-2 2v16l6-3 6 3V5a2 2 0 00-2-2z"
+        stroke="#000"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  )
+}

@@ -12,6 +12,7 @@ import { Link } from "expo-router";
 import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
+import BottomBar from "../components/BottomBar";
 
 export default function Quiz() {
   const [fontsLoaded] = useFonts({
@@ -58,8 +59,10 @@ export default function Quiz() {
               <AskDoubt onTextChange={handleTextChange} />
             </View>
           </View>
+         
         </View>
       )}
+       <BottomBar />
     </>
   );
 }
@@ -144,6 +147,7 @@ const styles = StyleSheet.create({
     fontFamily: "Rubik_400Regular",
     fontSize: 12,
     color: "#4F4F4F",
+    opacity: 0.8,
     lineHeight: 18,
     textAlign: "right",
   },

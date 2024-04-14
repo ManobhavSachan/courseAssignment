@@ -13,20 +13,24 @@ import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
-export default function Statement() {
+export default function Question() {
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
     Rubik_600SemiBold,
   });
   const [text, setText] = useState("");
+  const handleTextChange = (newText) => {
+    // console.log(newText);
+    setText(newText);
+  };
 
   return (
     <>
       {fontsLoaded && (
         <View style={styles.chatContainer}>
           <View style={styles.imageContainer}>
-            <Text style={styles.imageText}>👵🏽</Text>
+            <Text style={styles.imageText}>👩🏻‍⚕️</Text>
           </View>
           <View style={{ flexDirection: "column", width: 270 }}>
             <Text style={styles.greetingText}>Mrs. Amrita (Patient 1)</Text>
@@ -36,6 +40,10 @@ export default function Statement() {
               of bed and immediately had a sharp pain in her left hip. I am
               since then not able to ambulate without severe pain.
             </Text>
+
+            <Pressable style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>Osteoporosis</Text>
+            </Pressable>
           </View>
         </View>
       )}
@@ -70,7 +78,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 37,
     height: 37,
-    backgroundColor: "#FCEECF",
+    backgroundColor: "#7FB7F9",
     borderRadius: 4,
   },
   imageText: {
@@ -95,11 +103,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   buttonText: {
-    color: "#FFFFFF",
+    color: "#101828",
     fontSize: 12.62,
     fontFamily: "Rubik_500Medium",
     lineHeight: 18.94,
     color: "#101828",
+    opacity: 0.8,
     // alignSelf: "center",
   },
 });

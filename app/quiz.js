@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, ScrollView } from "react-native";
 import UpperHome from "../components/UpperHome";
 import { PaperSVG, DarkArrowRight } from "../utils/Svg";
 import {
@@ -13,6 +13,12 @@ import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 import BottomBar from "../components/BottomBar";
+import Statement from "../components/Statement";
+import Question from "../components/Question";
+import AskInfo from "../components/AskInfo";
+import CorrectAns from "../components/CorrectAns";
+import PartiallyCorrectAns from "../components/PartiallyCorrect";
+import IncorrectAns from "../components/IncorrectAns";
 
 export default function Quiz() {
   const [fontsLoaded] = useFonts({
@@ -30,39 +36,19 @@ export default function Quiz() {
       <StatusBar hidden />
       <UpperBar />
       {fontsLoaded && (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <View style={styles.subContainer}>
             <Text style={styles.subText}>View Case Details</Text>
           </View>
-          <View style={styles.chatContainer}>
-            <View style={styles.imageContainer}>
-              <Text style={styles.imageText}>👩🏻‍⚕️</Text>
-            </View>
-            <View style={{ flexDirection: "column", width: 270 }}>
-              <Text style={styles.greetingText}>SENIOR DR. PRIYA</Text>
-              <Text style={styles.welcomeText}>
-                You are right on time Dr. Shreya!
-              </Text>
-              <Text style={styles.welcomeText}>
-                We have 20 patients that are waiting to be diagnosed today.
-              </Text>
-              <Text style={styles.welcomeText}>
-                Don't worry, I am there to guide and help you learn. You can
-                learn along with me.
-              </Text>
-              <Link href="/start">
-                <Pressable style={styles.buttonContainer}>
-                  <Text style={styles.buttonText}>See the 1st patient</Text>
-                  <DarkArrowRight />
-                </Pressable>
-              </Link>
-              <AskDoubt onTextChange={handleTextChange} />
-            </View>
-          </View>
-         
-        </View>
+          <Statement />
+          <Question />
+          <AskInfo onTextChange={handleTextChange}/>
+          <CorrectAns />
+          <PartiallyCorrectAns />
+          <IncorrectAns />
+        </ScrollView>
       )}
-       <BottomBar />
+      <BottomBar />
     </>
   );
 }
@@ -117,6 +103,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     height: 37.08,
+    alignItems: "center",
     justifyContent: "space-between",
     alignItems: "center",
     shadowColor: "#3D3B3529",
@@ -131,7 +118,7 @@ const styles = StyleSheet.create({
     fontFamily: "Rubik_500Medium",
     lineHeight: 18.94,
     color: "#101828",
-    // alignSelf: "center",
+    alignSelf: "center",
   },
   subContainer: {
     // flexDirection: "row",

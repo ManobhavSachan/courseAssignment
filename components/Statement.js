@@ -14,7 +14,7 @@ import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
 export default function Statement(props) {
-    const no = props.no;
+  const no = props.no;
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
@@ -30,13 +30,10 @@ export default function Statement(props) {
             <Text style={styles.imageText}>👵🏽</Text>
           </View>
           <View style={{ flexDirection: "column", width: 270 }}>
-            <Text style={styles.greetingText}>Mrs. Amrita (Patient {parseInt(no) + 1})</Text>
-            <Text style={styles.welcomeText}>
-              I am an 80-year-old woman with no major medical problems. Never
-              been physically active for most of her life. Yesterday, I fell out
-              of bed and immediately had a sharp pain in her left hip. I am
-              since then not able to ambulate without severe pain.
+            <Text style={styles.greetingText}>
+              {props.name} (Patient {parseInt(no) + 1})
             </Text>
+            <Text style={styles.welcomeText}>{props.text}</Text>
           </View>
         </View>
       )}

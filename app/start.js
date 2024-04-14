@@ -19,7 +19,7 @@ export default function Start() {
     Rubik_500Medium,
     Rubik_600SemiBold,
   });
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
   const handleTextChange = (newText) => {
     // console.log(newText);
     setText(newText);
@@ -52,7 +52,7 @@ export default function Start() {
                   <DarkArrowRight />
                 </Pressable>
               </Link>
-              <AskDoubt onTextChange={handleTextChange}/>
+              <AskDoubt onTextChange={handleTextChange} />
             </View>
           </View>
         </View>
@@ -109,10 +109,10 @@ const styles = StyleSheet.create({
     borderRadius: 5.52,
     backgroundColor: "#FFFFFF",
     flexDirection: "row",
-    width: '100%',
+    width: "100%",
     height: 37.08,
     justifyContent: "space-between",
-    alignItems: "center", 
+    alignItems: "center",
     shadowColor: "#3D3B3529",
     shadowOffset: { width: 0, height: 0.79 },
     shadowRadius: 0,

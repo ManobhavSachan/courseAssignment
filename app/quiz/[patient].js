@@ -8,7 +8,8 @@ import {
   Rubik_600SemiBold,
   Rubik_400Regular,
 } from "@expo-google-fonts/rubik";
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from "expo-router";
+import { useEffect } from "react";
 import { Link } from "expo-router";
 import AskDoubt from "../../components/AskDoubt";
 import { useState } from "react";
@@ -21,6 +22,7 @@ import CorrectAns from "../../components/CorrectAns";
 import PartiallyCorrectAns from "../../components/PartiallyCorrect";
 import IncorrectAns from "../../components/IncorrectAns";
 
+const ws = new WebSocket("ws://localhost:8080");
 export default function Patient() {
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
@@ -31,26 +33,98 @@ export default function Patient() {
   const handleTextChange = (newText) => {
     // console.log(newText);
     setText(newText);
+    sendMessage(ws, JSON.stringify({ type: "partiallyCorrect" }));
   };
+  let flag = true;
+  const [message, setMessage] = useState("");
+  const [receivedMessage, setReceivedMessage] = useState({});
+  const [receivedAns, setReceivedAns] = useState({});
+
+  useEffect(() => {
+    ws.onopen = () => {
+      console.log("Connected to WebSocket server");
+
+      sendMessage(ws, JSON.stringify({ type: "initial" }));
+    };
+
+    ws.onmessage = (event) => {
+      console.log("Received:", event.data);
+      if (flag) setReceivedMessage(JSON.parse(event.data));
+      else setReceivedAns(JSON.parse(event.data));
+      flag = false;
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket error:", error);
+    };
+
+    ws.onclose = () => {
+      console.log("Disconnected from WebSocket server");
+    };
+
+    return () => {
+      ws.close();
+    };
+  }, []);
+
+  const sendMessage = (ws, message) => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(message);
+    } else {
+      console.error("WebSocket connection not open");
+    }
+  };
+  const [selected, setSelected] = useState("");
   const { patient } = useLocalSearchParams();
   return (
     <>
       <StatusBar hidden />
-      <UpperBar no = {patient}/>
+      <UpperBar no={patient} />
       {fontsLoaded && (
         <ScrollView style={styles.container}>
           <View style={styles.subContainer}>
             <Text style={styles.subText}>View Case Details</Text>
           </View>
-          <Statement no = {patient}/>
-          <Question no = {patient}/>
-          <AskInfo onTextChange={handleTextChange}/>
-          <CorrectAns no = {patient}/>
-          <PartiallyCorrectAns no = {patient}/>
-          <IncorrectAns no = {patient}/>
+          <Statement
+            no={patient}
+            name={receivedMessage?.text?.name || ""}
+            text={receivedMessage?.text?.statement || ""}
+          />
+          <Question
+            no={patient}
+            text={receivedMessage?.text?.problem || ""}
+            options={receivedMessage?.text?.options || []}
+            correct={receivedMessage?.text?.correctAnswer || ""}
+            onOptionSelect={(selectedOption) => {
+              console.log(selectedOption);
+              setSelected(selectedOption);
+              console.log(receivedMessage.text.correctAnswer, selected);
+              if (receivedMessage.text.correctAnswer === selected)
+                sendMessage(ws, JSON.stringify({ type: "correct" }));
+              else sendMessage(ws, JSON.stringify({ type: "inCorrect" }));
+            }}
+          />
+          <AskInfo onTextChange={handleTextChange} />
+          {text == "" &&
+            selected != "" &&
+            receivedMessage.text.correctAnswer === selected && (
+              <CorrectAns no={patient} text={receivedAns?.text?.text || ""} />
+            )}
+          {text == "" &&
+            selected != "" &&
+            receivedMessage.text.correctAnswer != selected && (
+              <IncorrectAns no={patient} text={receivedAns?.text?.text || ""} />
+            )}
+          {text != "" && (
+            <PartiallyCorrectAns
+              no={patient}
+              correctText={receivedAns?.text?.textCorrect || ""}
+              inCorrectText={receivedAns?.text?.textIncorrect || ""}
+            />
+          )}
         </ScrollView>
       )}
-      <BottomBar no = {patient}/>
+      <BottomBar no={patient} />
     </>
   );
 }

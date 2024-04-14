@@ -1,7 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import UpperHome from "../components/UpperHome";
-import { PaperSVG, DarkArrowRight, LightArrowRight, AddSVG, MagnifySVG } from "../utils/Svg";
+import {
+  PaperSVG,
+  DarkArrowRight,
+  LightArrowRight,
+  AddSVG,
+  MagnifySVG,
+} from "../utils/Svg";
 import {
   useFonts,
   Rubik_500Medium,
@@ -25,7 +31,7 @@ export default function CorrectAns(props) {
     // console.log(newText);
     setText(newText);
   };
-  const [flag, setFlag] = useState(false);  
+  const [flag, setFlag] = useState(false);
 
   return (
     <>
@@ -37,27 +43,22 @@ export default function CorrectAns(props) {
           <View style={{ flexDirection: "column", width: 270 }}>
             <Text style={styles.greetingText}>SENIOR DOCTOR</Text>
             <Text style={styles.correctText}>You’re right Dr. Shreya!</Text>
-            <Text style={styles.welcomeText}>
-              Osteoporosis is a common condition in elderly patients, especially
-              those who have been physically inactive. It leads to weakened
-              bones that are more susceptible to fractures from minimal trauma,
-              such as a fall from bed. The fractures described, including the
-              femoral head fracture and the compression fracture of the T10
-              vertebra, are characteristic of osteoporosis.
-            </Text>
-            <View style={{flexDirection: 'row'}}>
-            <Pressable style={styles.subContainer}>
+            <Text style={styles.welcomeText}>{props.text}</Text>
+            <View style={{ flexDirection: "row" }}>
+              <Pressable style={styles.subContainer}>
                 <AddSVG />
-              <Text style={styles.subText}> Add to Backpack</Text>
-            </Pressable>
-            <View style={styles.subContainer}>
+                <Text style={styles.subText}> Add to Backpack</Text>
+              </Pressable>
+              <View style={styles.subContainer}>
                 <MagnifySVG />
-              <Text style={styles.subText}> Go deeper</Text>
-            </View>
+                <Text style={styles.subText}> Go deeper</Text>
+              </View>
             </View>
             <Link href={"/quiz/" + (parseInt(no) + 1)}>
               <Pressable style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>See the {parseInt(no) + 1} patient</Text>
+                <Text style={styles.buttonText}>
+                  See the {parseInt(no) + 1} patient
+                </Text>
                 <LightArrowRight />
               </Pressable>
             </Link>

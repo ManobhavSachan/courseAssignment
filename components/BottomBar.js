@@ -1,6 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
-import { BackSVG, MenuSVG, StarSVG, PaperSVG, MenuBigSVG, ArrowRightSVG, BookMarkSVG } from "../utils/Svg";
+import {
+  BackSVG,
+  MenuSVG,
+  StarSVG,
+  PaperSVG,
+  MenuBigSVG,
+  ArrowRightSVG,
+  BookMarkSVG,
+} from "../utils/Svg";
 import {
   useFonts,
   Rubik_500Medium,
@@ -10,7 +18,7 @@ import * as Progress from "react-native-progress";
 import { Link } from "expo-router";
 
 const BottomBar = (props) => {
-    const no = props.no;
+  const no = props.no;
   const [fontsLoaded] = useFonts({
     Rubik_500Medium,
     Rubik_600SemiBold,
@@ -26,10 +34,10 @@ const BottomBar = (props) => {
             <MenuBigSVG />
           </Pressable>
           <Link href={"/quiz/" + (parseInt(no) + 1)}>
-          <View style={styles.solveContainer}>
-            <ArrowRightSVG />
-            <Text style={styles.titleText}>Skip</Text>
-          </View>
+            <View style={styles.solveContainer}>
+              <ArrowRightSVG />
+              <Text style={styles.titleText}>Skip</Text>
+            </View>
           </Link>
           <Pressable
             style={styles.backButton}
@@ -48,7 +56,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: "FFFFFF",
     height: 68,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   topContainer: {
     flexDirection: "row",

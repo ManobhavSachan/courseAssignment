@@ -8,7 +8,7 @@ import {
   Rubik_600SemiBold,
   Rubik_400Regular,
 } from "@expo-google-fonts/rubik";
-import {Link} from 'expo-router';
+import { Link } from "expo-router";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -34,9 +34,9 @@ export default function App() {
             </Text>
           </View>
           <Link href="/start">
-          <Pressable style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>ENTER THE OPD ROOM</Text>
-          </Pressable>
+            <Pressable style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>ENTER THE OPD ROOM</Text>
+            </Pressable>
           </Link>
           <View style={{ width: "100%" }}>
             <View

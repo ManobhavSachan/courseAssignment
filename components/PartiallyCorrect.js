@@ -23,7 +23,7 @@ import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
 export default function PartiallyCorrectAns(props) {
-    const no = props.no;
+  const no = props.no;
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
@@ -64,15 +64,7 @@ export default function PartiallyCorrectAns(props) {
                 <TickSVG />
                 <Text style={styles.correctText}>What you got right</Text>
               </View>
-              <Text style={styles.welcomeText}>
-                Osteoporosis is a common condition in elderly patients,
-                especially those who have been physically inactive. It leads to
-                weakened bones that are more susceptible to fractures from
-                minimal trauma, such as a fall from bed. The fractures
-                described, including the femoral head fracture and the
-                compression fracture of the T10 vertebra, are characteristic of
-                osteoporosis.
-              </Text>
+              <Text style={styles.welcomeText}>{props.correctText}</Text>
             </View>
             <View
               style={{
@@ -91,17 +83,11 @@ export default function PartiallyCorrectAns(props) {
                 }}
               >
                 <CrossSVG />
-                <Text style={styles.correctText}>What you got wrong or missed</Text>
+                <Text style={styles.correctText}>
+                  What you got wrong or missed
+                </Text>
               </View>
-              <Text style={styles.welcomeText}>
-                Osteoporosis is a common condition in elderly patients,
-                especially those who have been physically inactive. It leads to
-                weakened bones that are more susceptible to fractures from
-                minimal trauma, such as a fall from bed. The fractures
-                described, including the femoral head fracture and the
-                compression fracture of the T10 vertebra, are characteristic of
-                osteoporosis.
-              </Text>
+              <Text style={styles.welcomeText}>{props.inCorrectText}</Text>
             </View>
             <View style={{ flexDirection: "row" }}>
               <Pressable style={styles.subContainer}>
@@ -115,7 +101,9 @@ export default function PartiallyCorrectAns(props) {
             </View>
             <Link href={"/quiz/" + (parseInt(no) + 1)}>
               <Pressable style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>See the {parseInt(no) + 1} patient</Text>
+                <Text style={styles.buttonText}>
+                  See the {parseInt(no) + 1} patient
+                </Text>
                 <LightArrowRight />
               </Pressable>
             </Link>

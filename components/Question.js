@@ -1,54 +1,33 @@
-import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import UpperHome from "../components/UpperHome";
-import { PaperSVG, DarkArrowRight } from "../utils/Svg";
-import {
-  useFonts,
-  Rubik_500Medium,
-  Rubik_600SemiBold,
-  Rubik_400Regular,
-} from "@expo-google-fonts/rubik";
-import { Link } from "expo-router";
-import AskDoubt from "../components/AskDoubt";
-import { useState } from "react";
-import UpperBar from "../components/UpperBar";
+import React, { useState } from "react";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 
-export default function Question(props) {
-    const no = props.no;
-  const [fontsLoaded] = useFonts({
-    Rubik_400Regular,
-    Rubik_500Medium,
-    Rubik_600SemiBold,
-  });
-  const [text, setText] = useState("");
-  const handleTextChange = (newText) => {
-    // console.log(newText);
-    setText(newText);
+export default function Question({ no, text, options, onOptionSelect }) {
+  const handleOptionSelect = (option) => {
+    // Call the callback function with the selected option
+    onOptionSelect(option);
   };
 
   return (
-    <>
-      {fontsLoaded && (
-        <View style={styles.chatContainer}>
-          <View style={styles.imageContainer}>
-            <Text style={styles.imageText}>👩🏻‍⚕️</Text>
-          </View>
-          <View style={{ flexDirection: "column", width: 270 }}>
-            <Text style={styles.greetingText}>Mrs. Amrita (Patient {parseInt(no) + 1})</Text>
-            <Text style={styles.welcomeText}>
-              I am an 80-year-old woman with no major medical problems. Never
-              been physically active for most of her life. Yesterday, I fell out
-              of bed and immediately had a sharp pain in her left hip. I am
-              since then not able to ambulate without severe pain.
-            </Text>
-
-            <Pressable style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Osteoporosis</Text>
-            </Pressable>
-          </View>
-        </View>
-      )}
-    </>
+    <View style={styles.chatContainer}>
+      <View style={styles.imageContainer}>
+        <Text style={styles.imageText}>👩🏻‍⚕️</Text>
+      </View>
+      <View style={{ flexDirection: "column", width: 270 }}>
+        <Text style={styles.greetingText}>
+          Mrs. Amrita (Patient {parseInt(no) + 1})
+        </Text>
+        <Text style={styles.welcomeText}>{text}</Text>
+        {options.map((option, index) => (
+          <Pressable
+            key={index}
+            style={styles.buttonContainer}
+            onPress={() => handleOptionSelect(option)}
+          >
+            <Text style={styles.buttonText}>{option}</Text>
+          </Pressable>
+        ))}
+      </View>
+    </View>
   );
 }
 
@@ -60,7 +39,6 @@ const styles = StyleSheet.create({
     gap: 19,
   },
   greetingText: {
-    // marginTop: 63,
     color: "#101828",
     fontSize: 12,
     fontFamily: "Rubik_400Regular",
@@ -69,12 +47,10 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   welcomeText: {
-    // marginTop: -1,
     color: "#101828",
     fontSize: 12,
     fontFamily: "Rubik_400Regular",
     lineHeight: 18,
-    // marginBottom: 25,
   },
   imageContainer: {
     width: 37,
@@ -86,21 +62,18 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 30,
     fontFamily: "Rubik_400Regular",
-    // lineHeight: 45,
   },
   buttonContainer: {
-    marginTop: 31,
+    marginTop: 10,
     borderRadius: 5.52,
     backgroundColor: "#FFFFFF",
     flexDirection: "row",
     width: "100%",
+    borderWidth: 1,
+    borderColor: "#3D3B3529",
     height: 37.08,
     justifyContent: "space-between",
-    alignItems: "flex-start",
-    shadowColor: "#3D3B3529",
-    shadowOffset: { width: 0, height: 0.79 },
-    shadowRadius: 0,
-    elevation: 4,
+    alignItems: "center",
     paddingHorizontal: 12,
   },
   buttonText: {
@@ -108,8 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 12.62,
     fontFamily: "Rubik_500Medium",
     lineHeight: 18.94,
-    color: "#101828",
     opacity: 0.8,
-    // alignSelf: "center",
   },
 });

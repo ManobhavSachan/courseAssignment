@@ -20,6 +20,8 @@ export default function AskInfo({ onTextChange }) {
         placeHolderTextColor="#9FA2A9"
         value={text}
         onChangeText={handleTextChange}
+        multiline={true} 
+        numberOfLines={2}
       />
     </View>
   );
@@ -27,14 +29,14 @@ export default function AskInfo({ onTextChange }) {
 
 const styles = StyleSheet.create({
   infoContainer: {
-    marginTop: 31,
+    marginTop: 10,
     borderRadius: 5.52,
     backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#3D3B3529",
     flexDirection: "row",
     marginLeft: 80,
     marginRight: 40,
-    // width: "100%",
-    
     height: 37.08,
     justifyContent: "flex-start",
     alignItems: "center",
@@ -52,5 +54,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     marginLeft: 10,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    textAlignVertical: "center",
   },
 });

@@ -15,13 +15,10 @@ const UpperHome = () => {
   });
   return (
     <>
-    <Link href="/">
-      <Pressable
-        style={styles.backButton}
-
-      >
-        <BackSVG />
-      </Pressable>
+      <Link href="/">
+        <Pressable style={styles.backButton}>
+          <BackSVG />
+        </Pressable>
       </Link>
       {fontsLoaded && (
         <View style={styles.container}>

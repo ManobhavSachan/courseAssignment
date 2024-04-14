@@ -46,7 +46,7 @@ export default function Start() {
                 Don't worry, I am there to guide and help you learn. You can
                 learn along with me.
               </Text>
-              <Link href="/quiz">
+              <Link href="/quiz/1">
                 <Pressable style={styles.buttonContainer}>
                   <Text style={styles.buttonText}>See the 1st patient</Text>
                   <DarkArrowRight />

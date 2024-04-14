@@ -6,6 +6,7 @@ import {
   Rubik_500Medium,
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
+import { Link, router } from "expo-router";
 
 const UpperHome = () => {
   const [fontsLoaded] = useFonts({
@@ -14,12 +15,14 @@ const UpperHome = () => {
   });
   return (
     <>
+    <Link href="/">
       <Pressable
         style={styles.backButton}
-        onPress={() => alert("Back button pressed")}
+
       >
         <BackSVG />
       </Pressable>
+      </Link>
       {fontsLoaded && (
         <View style={styles.container}>
           <Text style={styles.titleText}>🦴 OSTEOLOGY</Text>

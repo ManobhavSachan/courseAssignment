@@ -7,8 +7,11 @@ import {
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
 import * as Progress from "react-native-progress";
+import { parse } from "react-native-svg";
+import { Link } from "expo-router";
 
-const UpperBar = () => {
+const UpperBar = (props) => {
+  const no = props.no;
   const [fontsLoaded] = useFonts({
     Rubik_500Medium,
     Rubik_600SemiBold,
@@ -17,15 +20,14 @@ const UpperBar = () => {
     <>
       <View style={styles.container}>
         <View style={styles.topContainer}>
-          <Pressable
-            style={styles.backButton}
-            onPress={() => alert("Back button pressed")}
-          >
-            <BackSVG />
-          </Pressable>
+          <Link href="/start">
+            <Pressable style={styles.backButton}>
+              <BackSVG />
+            </Pressable>
+          </Link>
           <View>
             <Progress.Bar
-              progress={0.3}
+              progress={parseInt(no) / 20}
               height={7}
               width={248}
               borderColor="#CFDEE8"

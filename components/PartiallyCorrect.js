@@ -22,7 +22,8 @@ import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
-export default function PartiallyCorrectAns() {
+export default function PartiallyCorrectAns(props) {
+    const no = props.no;
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
@@ -112,9 +113,9 @@ export default function PartiallyCorrectAns() {
                 <Text style={styles.subText}> Go deeper</Text>
               </View>
             </View>
-            <Link href="/quiz">
+            <Link href={"/quiz/" + (parseInt(no) + 1)}>
               <Pressable style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>See the 1st patient</Text>
+                <Text style={styles.buttonText}>See the {parseInt(no) + 1} patient</Text>
                 <LightArrowRight />
               </Pressable>
             </Link>

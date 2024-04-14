@@ -13,12 +13,13 @@ import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
-export default function CorrectAns() {
+export default function CorrectAns(props) {
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
     Rubik_600SemiBold,
   });
+  const no = props.no;
   const [text, setText] = useState("");
   const handleTextChange = (newText) => {
     // console.log(newText);
@@ -54,9 +55,9 @@ export default function CorrectAns() {
               <Text style={styles.subText}> Go deeper</Text>
             </View>
             </View>
-            <Link href="/quiz">
+            <Link href={"/quiz/" + (parseInt(no) + 1)}>
               <Pressable style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>See the 1st patient</Text>
+                <Text style={styles.buttonText}>See the {parseInt(no) + 1} patient</Text>
                 <LightArrowRight />
               </Pressable>
             </Link>

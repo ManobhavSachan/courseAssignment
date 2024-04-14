@@ -13,7 +13,8 @@ import AskDoubt from "../components/AskDoubt";
 import { useState } from "react";
 import UpperBar from "../components/UpperBar";
 
-export default function Question() {
+export default function Question(props) {
+    const no = props.no;
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
@@ -33,7 +34,7 @@ export default function Question() {
             <Text style={styles.imageText}>👩🏻‍⚕️</Text>
           </View>
           <View style={{ flexDirection: "column", width: 270 }}>
-            <Text style={styles.greetingText}>Mrs. Amrita (Patient 1)</Text>
+            <Text style={styles.greetingText}>Mrs. Amrita (Patient {parseInt(no) + 1})</Text>
             <Text style={styles.welcomeText}>
               I am an 80-year-old woman with no major medical problems. Never
               been physically active for most of her life. Yesterday, I fell out

@@ -38,3 +38,12 @@ This repository contains the solution for the Oncourse React Native assignment, 
 ### Setup Instructions
 - Run the Server.js file in server folder for the websocket.
 - Run the npx expo start command and press w for the browser.
+
+### ScreenShots
+
+![Screenshot (369)](https://github.com/ManobhavSachan/courseAssignment/assets/94208034/56e53170-2cf6-40c1-8685-a5130efe93dc)
+![Screenshot (368)](https://github.com/ManobhavSachan/courseAssignment/assets/94208034/79a503f0-62b1-49f7-88e6-995782f90843)
+![Screenshot (367)](https://github.com/ManobhavSachan/courseAssignment/assets/94208034/04401b7a-05b7-4449-b6ce-f4318fe278b8)
+![Screenshot (366)](https://github.com/ManobhavSachan/courseAssignment/assets/94208034/25cda054-7482-4c95-b1e3-6e62568a9f44)
+![Screenshot (365)](https://github.com/ManobhavSachan/courseAssignment/assets/94208034/26aadb1c-7690-4cb1-b8d7-fe49827fd31a)
+![Screenshot (370)](https://github.com/ManobhavSachan/courseAssignment/assets/94208034/10fccb19-b09b-4b01-8280-c2ba901b1acf)
